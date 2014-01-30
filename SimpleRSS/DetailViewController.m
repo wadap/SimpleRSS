@@ -26,19 +26,33 @@
     }
 }
 
+// ここで新しいrecipeを取得してきてちゃんと表示する処理をいれる
+- (void)getNewItem
+{
+    NSURL *url = [NSURL URLWithString:@"http://api.nanapi.jp/v1/recipeLookupDetails/?key=512f53ecbd959&recipe_id=3&format=json"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    }];
+}
+
 - (void)configureView
 {
     // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
+    self.recipeTitle.text   = [self.recipe objectForKey:@"title"];
+    self.recipeContent.text = [self.recipe objectForKey:@"body"];
+    
+    NSString *resizedImageURL = [NSString stringWithFormat:@"%@?size=200",[self.recipe objectForKey:@"image"]];
+    NSURL *imageURL    = [NSURL URLWithString:resizedImageURL];
+    NSData *imageData  = [NSData dataWithContentsOfURL:imageURL];
+    UIImage *image     = [UIImage imageWithData:imageData];
+    self.recipeImage.image = image;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }
 

@@ -14,16 +14,15 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    // 空の配列を用意
+    self.items = [NSArray array];
+    self.tableView.dataSource = self;
+    [self getJson];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // 空の配列を用意
-    self.items = [NSArray array];
-    self.tableView.dataSource = self;
-
-    [self getJson];
 }
 
 - (void)didReceiveMemoryWarning
@@ -32,6 +31,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.items count];
 }
@@ -45,8 +49,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifer];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    //    NSDictionary *item = [items objectAtIndex]
-    cell.textLabel.text = @"aaaa bbb ccc";
+    
+    NSDictionary *item = [self.items objectAtIndex:indexPath.row];
+    cell.textLabel.text = [item objectForKey:@"title"];
     return cell;
 }
 
@@ -82,6 +87,17 @@
         }
     }];
     [self.tableView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"detailView"]) {
+        NSLog(@"okok3ok");
+        DetailViewController *detailViewController = (DetailViewController *)[segue destinationViewController];
+        NSDictionary *item = [self.items objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        detailViewController.recipe = item;
+    }
+    
 }
 
 @end
