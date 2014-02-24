@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>391C9CDF-C3F3-4A81-99D8-044A94AC46A7</string>
+	<string>4EE68E4F-DD5C-4276-9BEB-523C20D94082</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SimpleRSS</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>891138FF-A639-4873-A357-152BDD3C2CAA</key>
-		<string>ssh://github.com/nanapi/SimpleRSS.git</string>
+		<key>6DDD8A01-27EA-443C-AC5B-127EFECC08D0</key>
+		<string>ssh://github.com/wadap/SimpleRSS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SimpleRSS.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>891138FF-A639-4873-A357-152BDD3C2CAA</key>
+		<key>6DDD8A01-27EA-443C-AC5B-127EFECC08D0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/nanapi/SimpleRSS.git</string>
+	<string>ssh://github.com/wadap/SimpleRSS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>891138FF-A639-4873-A357-152BDD3C2CAA</string>
+	<string>6DDD8A01-27EA-443C-AC5B-127EFECC08D0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>891138FF-A639-4873-A357-152BDD3C2CAA</string>
+			<string>6DDD8A01-27EA-443C-AC5B-127EFECC08D0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SimpleRSS</string>
 		</dict>

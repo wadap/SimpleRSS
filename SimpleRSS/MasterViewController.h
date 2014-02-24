@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController <UIApplicationDelegate, NSXMLParserDelegate>
+@interface MasterViewController : UITableViewController <UIApplicationDelegate>
 // buttonをタップしたときのアクションをキャッチ
 - (IBAction)refreshRSS:(id)sender;
 

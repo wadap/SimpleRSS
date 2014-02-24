@@ -51,10 +51,57 @@
     }
     
     NSDictionary *item = [self.items objectAtIndex:indexPath.row];
-    cell.textLabel.text = [item objectForKey:@"title"];
+
+    
+    // テキストセット
+    UILabel *titleLabel    = (UILabel *)[cell viewWithTag:3];
+    UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:4];
+    titleLabel.text    = [item objectForKey:@"title"];
+    subtitleLabel.text = [item objectForKey:@"body"];
+    
+    
+    // 画像セット
+    UIImageView *thumbnail = (UIImageView *)[cell viewWithTag:1];
+    UIImageView *favicon   = (UIImageView *)[cell viewWithTag:2];
+    
+    // 記事画像
+    NSString *imageURL = [NSString stringWithFormat:@"%@?size=80",[item objectForKey:@"image"]];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
+    
+    // ファビコン画像
+    NSString *faviconURL  = [NSString stringWithFormat:@"http://favicon.qfor.info/f/%@", [item objectForKey:@"url"]];
+    UIImage *faviconImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:faviconURL]]];
+
+    // 画像出力
+    thumbnail.image = image;
+    favicon.image = faviconImage;
+    
+    // セルごとに色を変換
+    cell.backgroundColor = [UIColor colorWithHue:0.61 saturation:0.09 brightness:0.99 alpha:1.0];
+    
     return cell;
 }
 
+//- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSString *str = @"aaaa";
+//    UIFont *font = [UIFont systemFontOfSize:12];
+//    
+//    CGSize size = CGSizeMake(label.with.size, 1000);
+////    CGSize textSize = [str sizeWithFont:font constrainedToSize: line]
+//    CGSize textSize = [str sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeCharacterWrap];
+//    
+//    float height = 50.0f;
+//    float h = textSize.height - label.size.height;
+//    
+//    if (h > 0) {
+//        height += h;
+//    }
+//
+//    return height;
+//    NSLog(@"hhhhh");
+//}
+//
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -92,12 +139,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"detailView"]) {
-        NSLog(@"okok3ok");
         DetailViewController *detailViewController = (DetailViewController *)[segue destinationViewController];
         NSDictionary *item = [self.items objectAtIndex:[self.tableView indexPathForSelectedRow].row];
         detailViewController.recipe = item;
     }
-    
 }
 
 @end
